@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  appName: 'Locatel',
+  tokenKey: 't0k3n',
+  userKey: 'us3r',
+  urlHost: 'http://localhost:8080',
+  urlApi: 'http://localhost:8080/api',
 };
 
 /*

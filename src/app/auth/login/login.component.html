@@ -1,0 +1,81 @@
+<div class="text-center body-login">
+  <main class="form-signin">
+    <form
+      [formGroup]="service.loginForm"
+      autocomplete="off"
+      (submit)="onSubmit()"
+    >
+      <img
+        class="mb-4"
+        src="assets/img/logo.svg"
+        alt=""
+        width="72"
+        height="57"
+      />
+      <h1 class="h3 mb-3 fw-normal">Iniciar Sesion Para Gestionar su Cuenta</h1>
+
+      <div>
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email"
+            formControlName="email"
+          />
+          <label for="floatingInput">Email</label>
+        </div>
+        <div *ngIf="service.loginForm.controls['email'].touched">
+          <mat-error
+            *ngIf="service.loginForm.controls['email'].errors?.required"
+          >
+            El campo es requerido
+          </mat-error>
+          <mat-error *ngIf="service.loginForm.controls['email'].errors?.email">
+            Debe ingresar un email valido
+          </mat-error>
+          <mat-error
+            *ngIf="
+              service.loginForm.controls['email'].errors?.CannotContainSpace
+            "
+          >
+            El campo no debe tener espacios en blanco
+          </mat-error>
+        </div>
+      </div>
+      <div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Contraseña"
+            formControlName="password"
+          />
+          <label for="floatingPassword">Contraseña</label>
+        </div>
+        <div *ngIf="service.loginForm.controls['password'].touched">
+          <mat-error
+            *ngIf="service.loginForm.controls['password'].errors?.required"
+          >
+            El campo es requerido
+          </mat-error>
+          <mat-error
+            *ngIf="
+              service.loginForm.controls['password'].errors?.CannotContainSpace
+            "
+          >
+            El campo no debe tener espacios en blanco
+          </mat-error>
+        </div>
+      </div>
+
+      <button
+        class="w-100 btn btn-lg btn-primary"
+        type="submit"
+        [disabled]="!service.loginForm.valid"
+      >
+        Ingresar
+      </button>
+      <p class="mt-5 mb-3 text-muted">&copy; Locatel</p>
+    </form>
+  </main>
+</div>
